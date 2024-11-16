@@ -50,8 +50,13 @@ jobs:
         echo "Authentication successful!"
         echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
 
-    # Step 6: Upload file to Google Cloud Storage
-    - name: Upload to Google Cloud Storage
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-      run: python scripts/upload_to_gcs.py
+    # # Step 6: Upload file to Google Cloud Storage
+    # - name: Upload to Google Cloud Storage
+    #   env:
+    #     GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+    #   run: python scripts/upload_to_gcs.py
+
+    - name: Upload file to GCS
+      run: |
+        echo "Uploading file to GCS..."
+        gsutil cp image.jpg gs://testingslack/
