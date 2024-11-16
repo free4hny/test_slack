@@ -33,11 +33,22 @@ jobs:
     - name: Fetch data and save to Excel
       run: python scripts/fetch_data.py
 
-    # Step 5: Authenticate with Google Cloud
-    - name: Authenticate with Google Cloud
-      uses: google-github-actions/auth@v1
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
       with:
-        credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        project_id: active-tangent-208606  # Replace with your Google Cloud Project ID
+        service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        
+
+    - name: Verify Authentication
+      run: |
+        gcloud auth list
+        echo "Authentication successful!"
+        echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
 
     # Step 6: Upload file to Google Cloud Storage
     - name: Upload to Google Cloud Storage
