@@ -8,7 +8,7 @@ def fetch_and_save_to_excel(input_file, output_file):
         input_data = file.read().strip()
 
     # Fetch data from an API
-    api_url = f"https://api.gsa.gov/acquisition/cap/v1/"  # Replace with actual API URL
+    api_url = f"https://api.gsa.gov/acquisition/cap/v1/{input_data}"  # Replace with actual API URL
     response = requests.get(api_url)
     
     if response.status_code == 200:
