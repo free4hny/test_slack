@@ -15,7 +15,7 @@ def upload_to_gcs(bucket_name, source_file, destination_blob):
     print(f"File {source_file} uploaded to {destination_blob} in bucket {bucket_name}.")
 
 if __name__ == "__main__":
-    bucket_name = "your-bucket-name"  # Replace with your GCS bucket name
+    bucket_name = "testingslack"  # Replace with your GCS bucket name
     source_file = "output_data.xlsx"
     destination_blob = "data/output_data.xlsx"
 
