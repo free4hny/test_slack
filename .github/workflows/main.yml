@@ -1,32 +1,62 @@
-name: Authenticate to Google Cloud
+# name: Authenticate to Google Cloud
+
+# on:
+#   workflow_dispatch:  # Allows manual triggering of the workflow
+
+# jobs:
+#   authenticate:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     # Step 1: Check out the repository
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+
+#     # Step 2: Write the service account key to a file
+#     - name: Write GCP service account key to file
+#       run: |
+#         mkdir -p $HOME/.config/gcloud
+#         echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $HOME/.config/gcloud/application_default_credentials.json
+
+#     # Step 3: Set up Google Cloud SDK
+#     - name: Set up Google Cloud SDK
+#       uses: google-github-actions/setup-gcloud@v1
+#       with:
+#         project_id: active-tangent-208606 # Replace with your GCP project ID
+
+#     # Step 4: Authenticate using the service account key
+#     - name: Authenticate to Google Cloud
+#       run: |
+#         gcloud auth activate-service-account --key-file=$HOME/.config/gcloud/application_default_credentials.json
+#         gcloud auth list
+#         echo "Authentication successful!"
+
+
+
+name: Verify Google Service Account Authentication
 
 on:
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   authenticate:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Check out the repository
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Step 2: Write the service account key to a file
-    - name: Write GCP service account key to file
-      run: |
-        mkdir -p $HOME/.config/gcloud
-        echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $HOME/.config/gcloud/application_default_credentials.json
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: active-tangent-208606  # Replace with your Google Cloud Project ID
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-    # Step 3: Set up Google Cloud SDK
-    - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1
-      with:
-        project_id: active-tangent-208606 # Replace with your GCP project ID
-
-    # Step 4: Authenticate using the service account key
-    - name: Authenticate to Google Cloud
-      run: |
-        gcloud auth activate-service-account --key-file=$HOME/.config/gcloud/application_default_credentials.json
-        gcloud auth list
-        echo "Authentication successful!"
+      - name: Verify Authentication
+        run: |
+          gcloud auth list
+          echo "Authentication successful!"
+  
