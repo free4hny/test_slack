@@ -25,4 +25,5 @@ def fetch_and_save_to_excel(input_file, output_file):
 if __name__ == "__main__":
     input_file = "input_file.txt"
     output_file = "output_data.xlsx"
-    fetch_and_save_to_excel(input_file, output_file)
+
+fetch_and_save_to_excel(input_file, output_file)
