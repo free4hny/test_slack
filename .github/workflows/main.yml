@@ -13,7 +13,7 @@ jobs:
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
         with:
-          service_account_key: ${{ GCP_SERVICE_ACCOUNT_KEY }} # Replace with your secret name
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }} # Replace with your secret name
           project_id: active-tangent-208606 # Your Google Cloud project ID
           
       - name: Authenticate to Google Cloud
