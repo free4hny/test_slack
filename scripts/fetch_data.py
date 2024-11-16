@@ -17,7 +17,6 @@ def fetch_and_save_to_excel(api_url, output_file):
         print(f"Data successfully written to {output_file}")
     else:
         print(f"Failed to fetch data. HTTP Status code: {response.status_code}")
-        print(f"Data successfully written to this path: {!pwd}")
 
 if __name__ == "__main__":
     # Define the API URL and the output Excel file
