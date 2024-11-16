@@ -17,6 +17,7 @@
 #       run: |
 #         mkdir -p $HOME/.config/gcloud
 #         echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $HOME/.config/gcloud/application_default_credentials.json
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
 
 #     # Step 3: Set up Google Cloud SDK
 #     - name: Set up Google Cloud SDK
