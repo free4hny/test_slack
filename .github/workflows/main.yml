@@ -1,0 +1,22 @@
+name: Google Cloud Authentication
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  authenticate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_key: ${{ GCP_SERVICE_ACCOUNT_KEY }} # Replace with your secret name
+          project_id: your-project-id # Your Google Cloud project ID
+          
+      - name: Authenticate to Google Cloud
+        run: |
+          gcloud auth activate-service-account --keyfile $HOME/.config/gcloud/application_default_credentials.json
+          echo "Successfully authenticated to Google Cloud!"
