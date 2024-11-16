@@ -42,6 +42,7 @@ jobs:
       with:
         project_id: active-tangent-208606  # Replace with your Google Cloud Project ID
         service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        service_account_email: ${{ secrets.GCP_SERVICE_EMAIL_KEY }}
         
 
     - name: Verify Authentication
