@@ -3,7 +3,7 @@ import os
 
 def upload_to_gcs(bucket_name, source_file, destination_blob):
     # Authenticate using the service account key
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "slack_test.json"  # Replace with your service account key file
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/user/keys/GCP_SERVICE_ACCOUNT_KEY.json"  # Replace with your service account key file
 
     # Initialize Google Cloud Storage client
     client = storage.Client()
