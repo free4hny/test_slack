@@ -59,4 +59,4 @@ jobs:
     - name: Upload file to GCS
       run: |
         echo "Uploading file to GCS..."
-        gsutil cp image.jpg gs://testingslack/
+        gsutil cp scripts/image.jpg gs://testingslack/
