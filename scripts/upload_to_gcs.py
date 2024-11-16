@@ -17,4 +17,4 @@ if __name__ == "__main__":
     source_file = "output_data.xlsx"
     destination_blob = "data/output_data.xlsx"
 
-    upload_to_gcs(bucket_name, source_file, destination_blob)
+upload_to_gcs(bucket_name, source_file, destination_blob)
