@@ -26,6 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Set up Google Cloud credentials
+      run: echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > service-account-key.json
+
     # Step 4: Fetch data from API and save to Excel
     - name: Fetch data and save to Excel
       run: python scripts/fetch_data.py
@@ -38,6 +41,6 @@ jobs:
 
     # Step 6: Upload file to Google Cloud Storage
     - name: Upload to Google Cloud Storage
-      run: python scripts/upload_to_gcs.py
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+      run: python scripts/upload_to_gcs.py
