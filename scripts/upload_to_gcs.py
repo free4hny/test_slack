@@ -2,9 +2,6 @@ from google.cloud import storage
 import os
 
 def upload_to_gcs(bucket_name, source_file, destination_blob):
-    # Authenticate using the service account key
-    # service_account_key = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
-    # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "GCP_SERVICE_ACCOUNT_KEY/service-account-key.json"  # Replace with your service account key file
 
     # Initialize Google Cloud Storage client
     client = storage.Client()
