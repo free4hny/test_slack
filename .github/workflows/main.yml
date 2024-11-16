@@ -14,7 +14,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0
         with:
           service_account_key: ${{ GCP_SERVICE_ACCOUNT_KEY }} # Replace with your secret name
-          project_id: your-project-id # Your Google Cloud project ID
+          project_id: active-tangent-208606 # Your Google Cloud project ID
           
       - name: Authenticate to Google Cloud
         run: |
