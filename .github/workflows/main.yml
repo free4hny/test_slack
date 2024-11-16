@@ -7,18 +7,24 @@ on:
 jobs:
   authenticate:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Check out the repository
       - uses: actions/checkout@v3
+
+      # Step 2: Write the service account key to a file
       - name: Write service account key to file
         run: echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $HOME/.config/gcloud/application_default_credentials.json
-      
+
+      # Step 3: Set up Google Cloud SDK
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v0
         with:
-          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }} # Replace with your secret name
-          project_id: active-tangent-208606 # Your Google Cloud project ID
-          
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          project_id: active-tangent-208606 # Replace with your Google Cloud project ID
+
+      # Step 4: Authenticate to Google Cloud
       - name: Authenticate to Google Cloud
         run: |
-          gcloud auth activate-service-account --key-file $HOME/.config/gcloud/application_default_credentials.json
+          gcloud auth activate-service-account --key-file=$HOME/.config/gcloud/application_default_credentials.json
           echo "Successfully authenticated to Google Cloud!"
