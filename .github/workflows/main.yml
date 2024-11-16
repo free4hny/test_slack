@@ -20,7 +20,7 @@ jobs:
 
     # Step 3: Set up Google Cloud SDK
     - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v3
+      uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: your-project-id # Replace with your GCP project ID
 
