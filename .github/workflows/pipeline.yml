@@ -40,7 +40,7 @@ jobs:
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
       with:
-        project_id: active-tangent-208606  # Replace with your Google Cloud Project ID
+        project_id: tonal-mote-441821-s7  # Replace with your Google Cloud Project ID
         service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
         service_account_email: ${{ secrets.GCP_SERVICE_EMAIL_KEY }}
         
